@@ -13,8 +13,6 @@ public class Lojinha {
     static HashMap<Integer, String> produtos = new HashMap<>();
     static ArrayList<String> produtosComprados = new ArrayList<>();
     
-    // static ArrayList<String> noCarrinho = new ArrayList<>();
-    
     public static void listaProdutos(){
 
         // Mostra cada preço com seu produto
@@ -27,8 +25,9 @@ public class Lojinha {
 
     public static void comprando(){
 
+        // Executa enquanto hashmap de produtos não estiver vazia
         while(!(produtos.isEmpty())){
-            System.out.print("\033[H\033[2J");
+            System.out.print("\033[H\033[2J"); // Limpa console
             System.out.println("Estes são os nossos produtos disponíveis!");
             listaProdutos();
 
@@ -38,16 +37,18 @@ public class Lojinha {
             produtosComprados.add(produtos.get(comprar)); // Adiciona o item escolhido no ArrayList de produtosComprados
             produtos.remove(comprar);
             
-            System.out.print("\033[H\033[2J"); // Limpa console
+            System.out.print("\033[H\033[2J");
 
             System.out.println("Comprar de novo? [S/N]: ");
             comprarDnv = scan.next(); // Use next, se não, não funciona
             
-            System.out.print("\033[H\033[2J"); // Limpa console
+            System.out.print("\033[H\033[2J");
 
             if(produtos.isEmpty()){
+
                 System.out.println("Não há mais nada para comprar!");
                 break;
+
             }
             if(comprarDnv.toUpperCase().substring(0,1).equals("S")){
                 
@@ -55,7 +56,7 @@ public class Lojinha {
                 listaProdutos();
 
             }
-            else if(comprarDnv.toUpperCase().substring(0,1).equals("N")){ break; }
+            else if(comprarDnv.toUpperCase().substring(0,1).equals("N")) { break; }
         }
     }
 
